@@ -71,6 +71,9 @@ mounts:
     '/.console':
         source: local
         source_path: 'console'
+    '/.preload':
+        source: local
+        source_path: preload
 
 # Configuration of the build of this application.
 build:
