@@ -1,5 +1,5 @@
 <?php
-$directory = new RecursiveDirectoryIterator(getenv('PLATFORM_APP_DIR') . '/web');
+$directory = new RecursiveDirectoryIterator(getenv('PLATFORM_APP_DIR') . '/web/sites');
 $fullTree = new RecursiveIteratorIterator($directory);
 $phpFiles = new RegexIterator($fullTree, '/.+((?<!Test)+\.php$)/i', RecursiveRegexIterator::GET_MATCH);
 
