@@ -9,16 +9,16 @@ name: 'app'
 # The runtime the application uses.
 type: 'php:7.4'
 
-# variables:
-#     php:
-#         assert.active: 'off'
-#         display_errors: 'off'
-#         display_startup_errors: 'off'
-#         max_execution_time: '30'
-#         session.use_strict_mode: 'On'
-#         zend.detect_unicode: 'Off'
-#         # opcache.preload: 'preload.php'
-#         realpath_cache_ttl: '3600'
+variables:
+    php:
+        assert.active: 'off'
+        display_errors: 'off'
+        display_startup_errors: 'off'
+        max_execution_time: '30'
+        session.use_strict_mode: 'On'
+        zend.detect_unicode: 'Off'
+        # opcache.preload: 'preload.php'
+        realpath_cache_ttl: '3600'
 
 dependencies:
     php:
