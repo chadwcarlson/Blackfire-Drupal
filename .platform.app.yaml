@@ -17,7 +17,7 @@ variables:
         max_execution_time: '30'
         session.use_strict_mode: 'On'
         zend.detect_unicode: 'Off'
-        opcache.preload: 'preload.php'
+        # opcache.preload: 'preload.php'
         realpath_cache_ttl: '3600'
 
 dependencies:
