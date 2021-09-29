@@ -11,15 +11,14 @@ variables:
         session.use_strict_mode: 'On'
         zend.detect_unicode: 'Off'
         opcache.preload: '.preload/preloader.php'
-        # opcache.blacklist_filename: 'opcache_blacklist.txt'
+        opcache.memory_consumption: '128'
+        opcache.interned_strings_buffer: '8'
+        opcache.max_accelerated_files: '4000'
+        opcache.revalidate_freq: '60'
+        opcache.fast_shutdown: '1'
+        opcache.enable_cli: '1'
         realpath_cache_ttl: '3600'
         session.gc_probability: '0'
-        # opcache.memory_consumption=128
-        # opcache.interned_strings_buffer=8
-        # opcache.max_accelerated_files=4000
-        # opcache.revalidate_freq=60
-        # opcache.fast_shutdown=1
-        # opcache.enable_cli=1
 
 dependencies:
     php:
@@ -93,6 +92,7 @@ hooks:
     deploy: |
         set -e
         php ./drush/platformsh_generate_drush_yml.php
+        echo "-------------------"
         cd web
         drush -y updatedb
         drush -y config-import
