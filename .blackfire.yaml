@@ -1,0 +1,83 @@
+tests:
+    '"assert.active" is a dev_only feature and should be disabled in production':
+        path:
+            - '/.*'
+        methods:
+            - ANY
+        command: '.*'
+        assertions:
+            - { label: null, expression: 'runtime.configuration.assert_active === false' }
+        exclude: {  }
+    '"display_errors" should be disabled':
+        path:
+            - '/.*'
+        methods:
+            - ANY
+        command: '.*'
+        assertions:
+            - { label: null, expression: 'not is_configuration_enabled("display_errors")' }
+        exclude: {  }
+    '"display_startup_errors" should not be enabled':
+        path:
+            - '/.*'
+        methods:
+            - ANY
+        command: '.*'
+        assertions:
+            - { label: null, expression: 'not is_configuration_enabled("display_startup_errors")' }
+        exclude: {  }
+    '"max_execution_time" should be less than 30 seconds for Web requests':
+        path:
+            - '/.*'
+        methods:
+            - ANY
+        assertions:
+            - { label: null, expression: 'runtime.configuration.max_execution_time <= 30' }
+        exclude: {  }
+    '"session.use_strict_mode" should be enabled':
+        path:
+            - '/.*'
+        methods:
+            - ANY
+        command: '.*'
+        assertions:
+            - { label: null, expression: 'runtime.configuration.session_use_strict_mode === true' }
+        exclude: {  }
+    '"zend.detect_unicode" should be disabled as BOMs are not portable':
+        path:
+            - '/.*'
+        methods:
+            - ANY
+        command: '.*'
+        assertions:
+            - { label: null, expression: 'runtime.configuration.zend_detect_unicode === false' }
+        exclude: {  }
+    # 'PHP Preloading should be configured':
+    #     path:
+    #         - '/.*'
+    #     methods:
+    #         - ANY
+    #     command: '.*'
+    #     assertions:
+    #         - { label: null, expression: 'runtime.configuration.opcache_preload != ""' }
+    #     when: 'is_extension_loaded("zend_opcache")'
+    #     exclude: {  }
+    'The realpath cache ttl should be more than one hour in production':
+        path:
+            - '/.*'
+        methods:
+            - ANY
+        command: '.*'
+        assertions:
+            - { label: null, expression: 'runtime.configuration.realpath_cache_ttl >= 3600' }
+        exclude: {  }
+    'You should enable APCu for Drupal 8':
+        path:
+            - '/.*'
+        methods:
+            - ANY
+        command: '.*'
+        assertions:
+            - { label: null, expression: 'metrics.drupal8.fast_cache.count > 0' }
+        when: 'metrics.drupal8.installed.count > 0'
+        exclude: {  }
