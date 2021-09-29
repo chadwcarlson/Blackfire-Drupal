@@ -52,16 +52,16 @@ tests:
         assertions:
             - { label: null, expression: 'runtime.configuration.zend_detect_unicode === false' }
         exclude: {  }
-    # 'PHP Preloading should be configured':
-    #     path:
-    #         - '/.*'
-    #     methods:
-    #         - ANY
-    #     command: '.*'
-    #     assertions:
-    #         - { label: null, expression: 'runtime.configuration.opcache_preload != ""' }
-    #     when: 'is_extension_loaded("zend_opcache")'
-    #     exclude: {  }
+    'PHP Preloading should be configured':
+        path:
+            - '/.*'
+        methods:
+            - ANY
+        command: '.*'
+        assertions:
+            - { label: null, expression: 'runtime.configuration.opcache_preload != ""' }
+        when: 'is_extension_loaded("opcache")'
+        exclude: {  }
     'The realpath cache ttl should be more than one hour in production':
         path:
             - '/.*'
