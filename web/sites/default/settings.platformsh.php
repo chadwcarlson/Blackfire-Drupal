@@ -6,10 +6,9 @@
 
 use DarkGhostHunter\Preloader\Preloader;
 
-Preloader::make()->writeTo(__DIR__.'/preloader.php');
+Preloader::make()->writeTo(getenv('PLATFORM_APP_DIR') . '/preloader.php');
 
 use Drupal\Core\Installer\InstallerKernel;
-// use Platformsh\ConfigReader\Config;
 
 $platformsh = new \Platformsh\ConfigReader\Config();
 
