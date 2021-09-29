@@ -5,6 +5,7 @@
  */
 
 use Drupal\Core\Installer\InstallerKernel;
+use Platformsh\ConfigReader\Config;
 
 $platformsh = new \Platformsh\ConfigReader\Config();
 
