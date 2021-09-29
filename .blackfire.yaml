@@ -60,7 +60,7 @@ tests:
         command: '.*'
         assertions:
             - { label: null, expression: 'runtime.configuration.opcache_preload != ""' }
-        when: 'is_extension_loaded("opcache")'
+        when: 'is_extension_loaded("zendopcache")'
         exclude: {  }
     'The realpath cache ttl should be more than one hour in production':
         path:
