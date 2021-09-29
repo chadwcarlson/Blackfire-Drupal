@@ -81,3 +81,12 @@ tests:
             - { label: null, expression: 'metrics.drupal8.fast_cache.count > 0' }
         when: 'metrics.drupal8.installed.count > 0'
         exclude: {  }
+    'The session garbage collector should be disabled in production':
+        path:
+            - '/.*'
+        methods:
+            - ANY
+        command: '.*'
+        assertions:
+            - { label: null, expression: 'runtime.configuration.session_gc_probability === 0' }
+        exclude: {  }

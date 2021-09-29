@@ -19,6 +19,7 @@ variables:
         zend.detect_unicode: 'Off'
         # opcache.preload: 'preload.php'
         realpath_cache_ttl: '3600'
+        session.gc_probability: '0'
 
 dependencies:
     php:
@@ -158,3 +159,6 @@ crons:
     drupal:
         spec: '*/19 * * * *'
         cmd: 'cd web ; drush core-cron'
+    garbage:
+        spec: '*/11 * * * *'
+        cmd: 'php garbage-collect.php'
