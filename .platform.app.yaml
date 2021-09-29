@@ -18,6 +18,7 @@ variables:
         session.use_strict_mode: 'On'
         zend.detect_unicode: 'Off'
         opcache.preload: 'preload.php'
+        opcache.blacklist_filename: 'opcache_blacklist.txt'
         realpath_cache_ttl: '3600'
         session.gc_probability: '0'
 
