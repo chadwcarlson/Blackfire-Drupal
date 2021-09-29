@@ -5,5 +5,8 @@ $regex = new RegexIterator($iterator, '/^.+\.php$/i', RecursiveRegexIterator::GE
 
 foreach ($regex as $key => $file) {
     // This is the important part!
+    // if ($file[0] != "")
+    print_r($file[0]);
     opcache_compile_file($file[0]);
+
 }

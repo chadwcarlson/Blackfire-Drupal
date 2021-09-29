@@ -34,15 +34,15 @@ if (isset($platformsh->branch)) {
     $config['system.logging']['error_level'] = 'verbose';
   }
 
-  $config['cache_backends'][] = 'sites/all/modules/contrib/apcu/apcu.cache.inc';
-  $config['cache_backends'][] = 'sites/all/modules/contrib/chained_fast/chained_fast.cache.inc';
+  // $config['cache_backends'][] = 'sites/all/modules/contrib/apcu/apcu.cache.inc';
+  // $config['cache_backends'][] = 'sites/all/modules/contrib/chained_fast/chained_fast.cache.inc';
 
-  // Chained fast configuration.
-  $config['chained_fast']['fast_backend'] = 'DrupalAPCuCache';
+  // // Chained fast configuration.
+  // $config['chained_fast']['fast_backend'] = 'DrupalAPCuCache';
 
-  // Cache class configuration - This uses chained_fast for all caches except the form cache. This might not be suitable for all sites, but is a good default.
-  $config['cache_default_class'] = 'ChainedFastBackend';
-  $config['cache_class_cache_form'] = 'DrupalDatabaseCache';
+  // // Cache class configuration - This uses chained_fast for all caches except the form cache. This might not be suitable for all sites, but is a good default.
+  // $config['cache_default_class'] = 'ChainedFastBackend';
+  // $config['cache_class_cache_form'] = 'DrupalDatabaseCache';
 }
 
 // Enable Redis caching.
