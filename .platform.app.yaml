@@ -29,8 +29,7 @@ runtime:
         - redis
         - blackfire
         - opcache
-
-        # - apcu
+        - apcu
 
 relationships:
     database: 'db:mysql'
