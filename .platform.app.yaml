@@ -75,7 +75,7 @@ mounts:
 # Configuration of the build of this application.
 build:
     # Automatically run `composer install` on every build.
-    flavor: composer
+    flavor: none
 
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
@@ -83,6 +83,8 @@ hooks:
     # No services are available but the disk is writeable.
     build: |
         set -e
+        composer --no-ansi --no-interaction install --no-progress --prefer-dist --optimize-autoloader --apcu-autoloader
+        composer dump-autoload --apcu
     # The deploy hook runs after your application has been deployed and started.
     # Code cannot be modified at this point but the database is available.
     # The site is not accepting requests while this script runs so keep it
