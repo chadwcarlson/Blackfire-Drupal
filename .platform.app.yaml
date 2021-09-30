@@ -10,7 +10,6 @@ variables:
         max_execution_time: '30'
         session.use_strict_mode: 'On'
         zend.detect_unicode: 'Off'
-        opcache.preload: '.preload/preloader.php'
         opcache.memory_consumption: '128'
         opcache.interned_strings_buffer: '8'
         opcache.max_accelerated_files: '4000'
