@@ -95,3 +95,35 @@ tests:
         assertions:
             - { label: null, expression: 'runtime.configuration.session_gc_probability === 0' }
         exclude: {  }
+recommendations:
+    php.drupal8.enable_apcu:
+        enabled: false
+    php.drupal8.twig_cache:
+        enabled: false
+scenarios: |
+    #!blackfire-player
+
+    name "Umami Scenarios"
+
+    group login
+        visit url("/en/user/login")
+            name "Login page"
+            set UN "Umami"
+            set PW "umami"
+            set user_login css('form.user-login-form div.js-form-item:nth-child(1)').text()
+            set user_login css('form.user-login-form div.js-form-item:nth-child(2)').text()
+
+        submit button("Sign in")
+            name "Authenticate"
+            param UN user_login
+            param PW user_password
+
+        follow
+            expect css('nav.contextual-region ul.menu-account > li.menu-account__item:nth-child(2) a.menu-account__link').text() == 'Log out'
+
+    scenario
+        name "Authenticated Visit"
+        include login
+        visit url("/")
+            name "Homepage"
+            expect status_code() == 200
