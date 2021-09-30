@@ -88,10 +88,8 @@ hooks:
     # The site is not accepting requests while this script runs so keep it
     # fast.
     deploy: |
-        rm .preload/preloader.php
         set -e
         php ./drush/platformsh_generate_drush_yml.php
-        echo "-------------------"
         cd web
         drush -y updatedb
         drush -y config-import
