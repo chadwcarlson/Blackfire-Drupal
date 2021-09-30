@@ -1,4 +1,9 @@
 tests:
+    'The homepage should be fast':
+        path: 
+          - '/'
+        assertions:
+            - 'main.wall_time <= 250ms'
     '"assert.active" is a dev_only feature and should be disabled in production':
         path:
             - '/.*'
