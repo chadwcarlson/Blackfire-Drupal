@@ -111,7 +111,7 @@ scenarios: |
             set UN "Umami"
             set PW "umami"
             set user_login css('form.user-login-form div.js-form-item:nth-child(1)').text()
-            set user_login css('form.user-login-form div.js-form-item:nth-child(2)').text()
+            set user_password css('form.user-login-form div.js-form-item:nth-child(2)').text()
 
         submit button("Sign in")
             name "Authenticate"
