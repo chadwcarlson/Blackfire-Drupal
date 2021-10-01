@@ -113,7 +113,7 @@ scenarios: |
             set user_login css('form.user-login-form div.js-form-item:nth-child(1)').text()
             set user_password css('form.user-login-form div.js-form-item:nth-child(2)').text()
 
-        submit button("Sign in")
+        submit button("Log in")
             name "Authenticate"
             param UN user_login
             param PW user_password
