@@ -76,16 +76,16 @@ tests:
         assertions:
             - { label: null, expression: 'runtime.configuration.realpath_cache_ttl >= 3600' }
         exclude: {  }
-    'You should enable APCu for Drupal 8':
-        path:
-            - '/.*'
-        methods:
-            - ANY
-        command: '.*'
-        assertions:
-            - { label: null, expression: 'metrics.drupal8.fast_cache.count > 0' }
-        when: 'metrics.drupal8.installed.count > 0'
-        exclude: {  }
+    # 'You should enable APCu for Drupal 8':
+    #     path:
+    #         - '/.*'
+    #     methods:
+    #         - ANY
+    #     command: '.*'
+    #     assertions:
+    #         - { label: null, expression: 'metrics.drupal8.fast_cache.count > 0' }
+    #     when: 'metrics.drupal8.installed.count > 0'
+    #     exclude: {  }
     'The session garbage collector should be disabled in production':
         path:
             - '/.*'
