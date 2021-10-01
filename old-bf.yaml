@@ -108,15 +108,13 @@ scenarios: |
     group login
         visit url("/en/user/login")
             name "Login page"
-            set UN "Umami"
-            set PW "umami"
             set user_login css('form.user-login-form div.js-form-item:nth-child(1)').text()
             set user_password css('form.user-login-form div.js-form-item:nth-child(2)').text()
 
         submit button("Log in")
             name "Authenticate"
-            param UN user_login
-            param PW user_password
+            param var('umami_username') user_login
+            param var('umami_password') user_password
 
         follow
             expect css('nav.contextual-region ul.menu-account > li.menu-account__item:nth-child(2) a.menu-account__link').text() == 'Log out'
