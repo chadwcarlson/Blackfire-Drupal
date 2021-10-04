@@ -134,6 +134,15 @@ scenarios: |
         include articles
         include recipes
 
+    scenario
+        name "Authenticated Visit"
+        include login
+        visit url("/")
+            name "Homepage"
+            expect status_code() == 200
+        include articles
+        include recipes
+
 
 # scenario
 #     name "Authenticated Visit"
