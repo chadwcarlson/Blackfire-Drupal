@@ -109,7 +109,8 @@ scenarios: |
         visit url("/en/user/login")
             name "Login page"
 
-        submit button("Log in")
+        # submit button("Log in")
+        submit css('.user-login-form')
             name "Authenticate"
             param name "var('umami_username')"
             param pass "var('umami_password')"
