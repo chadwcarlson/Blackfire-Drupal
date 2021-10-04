@@ -114,6 +114,17 @@ scenarios: |
             param name "var('umami_username')"
             param pass "var('umami_password')"
 
+    group articles
+        visit url("/en/articles")
+            name "Articles"
+            expect status_code() == 200
+            expect css("div.views-content > div").count() == 8
+
+    group recipes
+        visit url("/en/recipes")
+            name "Recipes"
+            expect status_code() == 200
+
     scenario
         name "Authenticated Visit"
         include login
@@ -127,5 +138,7 @@ scenarios: |
         visit url("/")
             name "Homepage"
             expect status_code() == 200
+        include articles
+        include recipes
 
 
