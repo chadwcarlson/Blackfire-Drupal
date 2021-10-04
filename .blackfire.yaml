@@ -118,13 +118,13 @@ scenarios: |
         visit url("/en/articles")
             name "Articles"
             expect status_code() == 200
-            expect css("div.view-content > div").count() == 8
+            expect css("div.view-content > div").count() == 9
 
     group recipes
         visit url("/en/recipes")
             name "Recipes"
             expect status_code() == 200
-            expect css("div.view-content > div").count() == 9
+            expect css("div.view-content > div").count() == 10
 
     scenario
         name "Anonymous Visit"
