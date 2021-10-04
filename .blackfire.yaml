@@ -126,14 +126,6 @@ scenarios: |
             expect status_code() == 200
 
     scenario
-        name "Authenticated Visit"
-        include login
-        visit url("/")
-            name "Homepage"
-            expect status_code() == 200
-            expect css('nav.contextual-region ul.menu-account > li.menu-account__item:nth-child(2) a.menu-account__link').text() == 'Log out'
-
-    scenario
         name "Anonymous Visit"
         visit url("/")
             name "Homepage"
@@ -142,3 +134,10 @@ scenarios: |
         include recipes
 
 
+# scenario
+#     name "Authenticated Visit"
+#     include login
+#     visit url("/")
+#         name "Homepage"
+#         expect status_code() == 200
+#         expect css('nav.contextual-region ul.menu-account > li.menu-account__item:nth-child(2) a.menu-account__link').text() == 'Log out'
