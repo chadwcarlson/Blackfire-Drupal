@@ -118,13 +118,13 @@ scenarios: |
         visit url("/en/articles")
             name "Articles"
             expect status_code() == 200
-            expect css("div.view-content > div.views-row").count() == 9
+            expect css("div.view-content > div.views-row").count() == 8
 
     group recipes
         visit url("/en/recipes")
             name "Recipes"
             expect status_code() == 200
-            expect css("div.view-content > div").count() == 10
+            expect css("div.view-content > div").count() == 9
 
     scenario
         name "Anonymous Visit"
@@ -133,6 +133,10 @@ scenarios: |
             expect status_code() == 200
         include articles
         include recipes
+        visit url("/en/admin/content")
+            expect status_code() == 302
+        visit url("/en/admin/structure")
+            expect status_code() == 302
 
     scenario
         name "Authenticated Visit"
@@ -140,9 +144,13 @@ scenarios: |
         visit url("/")
             name "Homepage"
             expect status_code() == 200
-            # expect css('li.menu-account__item:nth-child(2) > a:nth-child(1)').text() == 'Log out'
+            expect css('nav.contextual-region ul.menu-account > li.menu-account__item:nth-child(2) > a:nth-child(1)').text() == 'Log out'
         include articles
         include recipes
+        visit url("/en/admin/content")
+            expect status_code() == 200
+        visit url("/en/admin/structure")
+            expect status_code() == 302
 
 
 # scenario
