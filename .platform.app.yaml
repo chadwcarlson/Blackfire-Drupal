@@ -82,6 +82,7 @@ hooks:
         set -e
         composer --no-ansi --no-interaction install --no-progress --prefer-dist --optimize-autoloader --apcu-autoloader
         composer dump-autoload --apcu
+        echo "Build hook complete."
     # The deploy hook runs after your application has been deployed and started.
     # Code cannot be modified at this point but the database is available.
     # The site is not accepting requests while this script runs so keep it
