@@ -113,8 +113,6 @@ scenarios: |
             name "Authenticate"
             param name "var('umami_username')"
             param pass "var('umami_password')"
-            expect status_code() == 200
-            expect css('nav.contextual-region ul.menu-account > li.menu-account__item:nth-child(2) a.menu-account__link').text() == 'Log out'
 
     scenario
         name "Authenticated Visit"
@@ -122,10 +120,12 @@ scenarios: |
         visit url("/")
             name "Homepage"
             expect status_code() == 200
+            expect css('nav.contextual-region ul.menu-account > li.menu-account__item:nth-child(2) a.menu-account__link').text() == 'Log out'
 
     scenario
         name "Anonymous Visit"
         visit url("/")
             name "Homepage"
             expect status_code() == 200
+
 
