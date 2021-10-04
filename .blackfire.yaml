@@ -129,14 +129,17 @@ scenarios: |
     scenario
         name "Anonymous Visit"
         visit url("/")
-            name "Homepage"
+            name "Homepage (English)"
+            expect status_code() == 200
+        visit url("/es")
+            name "Homepage (Español)"
             expect status_code() == 200
         include articles
         include recipes
         visit url("/en/admin/content")
-            expect status_code() == 302
+            expect status_code() == 403
         visit url("/en/admin/structure")
-            expect status_code() == 302
+            expect status_code() == 403
 
     scenario
         name "Authenticated Visit"
@@ -148,9 +151,9 @@ scenarios: |
         include articles
         include recipes
         visit url("/en/admin/content")
-            expect status_code() == 200
+            expect status_code() == 403
         visit url("/en/admin/structure")
-            expect status_code() == 302
+            expect status_code() == 403
 
 
 # scenario
