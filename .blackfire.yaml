@@ -113,6 +113,10 @@ scenarios: |
             name "Authenticate"
             param name "var('umami_username')"
             param pass "var('umami_password')"
+            expect status_code() == 302
+
+        follow
+            expect status_code() == 200
             expect css('nav.block ul.menu-account > li.menu-account__item').count() > 2
 
     group homepages
