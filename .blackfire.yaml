@@ -108,13 +108,11 @@ scenarios: |
     group login
         visit url("/en/user/login")
             name "Login page"
-            set user_login xpath('//*[@id="edit-name"]').text()
-            set user_password xpath('//*[@id="edit-pass"]').text()
 
         submit button("Log in")
             name "Authenticate"
-            param user_login "var('umami_username')"
-            param user_password "var('umami_password')"
+            param name "var('umami_username')"
+            param pass "var('umami_password')"
 
         follow
             expect css('nav.contextual-region ul.menu-account > li.menu-account__item:nth-child(2) a.menu-account__link').text() == 'Log out'
