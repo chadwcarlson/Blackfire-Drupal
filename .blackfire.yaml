@@ -113,7 +113,7 @@ scenarios: |
             name "Authenticate"
             param name "var('umami_username')"
             param pass "var('umami_password')"
-            expect css('nav.contextual-region ul.menu-account > li.menu-account__item:nth-child(2) > a').count() > 0
+            expect css('nav.contextual-region ul.menu-account > li.menu-account__item').count() > 0
 
     group homepages
         visit url("/")
