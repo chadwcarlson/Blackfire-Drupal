@@ -135,7 +135,13 @@ scenarios: |
             expect status_code() == 200
             expect css("div.view-content > div.views-row").count() == 9
 
-    group admin_only
+    group admin_anonymous
+        visit url("/en/admin/content")
+            expect status_code() == 403
+        visit url("/en/admin/structure")
+            expect status_code() == 403
+
+    group admin_authenticated
         visit url("/en/admin/content")
             expect status_code() == 403
         visit url("/en/admin/structure")
@@ -146,7 +152,7 @@ scenarios: |
         include homepages
         include articles
         include recipes
-        include admin_only
+        include admin_anonymous
 
     scenario
         name "Authenticated Visit"
@@ -154,10 +160,10 @@ scenarios: |
         visit url("/")
             name "Homepage"
             expect status_code() == 200
-            #expect css('nav.contextual-region ul.menu-account > li.menu-account__item:nth-child(2) > a:nth-child(1)').text() == 'Log out'
+            #expect css('nav.block ul.menu-account > li.menu-account__item:nth-child(2) > a:nth-child(1)').text() == 'Log out'
         include articles
         include recipes
-        include admin_only
+        include admin_authenticated
 
 
 # scenario
