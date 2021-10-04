@@ -108,7 +108,7 @@ scenarios: |
     group login
         visit url("/en/user/login")
             name "Login page"
-            set user_login css('form.user-login-form div.js-form-item > #edit-name').text()
+            set user_login css('#edit-name').text()
             set user_password css('form.user-login-form div.js-form-item:nth-child(2)').text()
 
         submit button("Log in")
@@ -132,4 +132,3 @@ scenarios: |
             name "Homepage"
             expect status_code() == 200
 
-#edit-name
