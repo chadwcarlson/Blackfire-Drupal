@@ -124,7 +124,7 @@ scenarios: |
         visit url("/en/recipes")
             name "Recipes"
             expect status_code() == 200
-            expect css("div.view-content > div").count() == 9
+            expect css("div.view-content > div.views-row").count() == 9
 
     scenario
         name "Anonymous Visit"
@@ -144,7 +144,7 @@ scenarios: |
         visit url("/")
             name "Homepage"
             expect status_code() == 200
-            expect css('nav.contextual-region ul.menu-account > li.menu-account__item:nth-child(2) > a:nth-child(1)').text() == 'Log out'
+            #expect css('nav.contextual-region ul.menu-account > li.menu-account__item:nth-child(2) > a:nth-child(1)').text() == 'Log out'
         include articles
         include recipes
         visit url("/en/admin/content")
