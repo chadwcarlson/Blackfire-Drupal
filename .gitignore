@@ -30,3 +30,6 @@ private
 .drush
 drush-backups
 .console
+profile.sh
+environment-magic
+old-bf.yaml
