@@ -108,8 +108,8 @@ scenarios: |
     group login
         visit url("/en/user/login")
             name "Login page"
-            set user_login css('#edit-name').text()
-            set user_password css('form.user-login-form div.js-form-item:nth-child(2)').text()
+            set user_login xpath('//*[@id="edit-name"]').text()
+            set user_password xpath('//*[@id="edit-pass"]').text()
 
         submit button("Log in")
             name "Authenticate"
