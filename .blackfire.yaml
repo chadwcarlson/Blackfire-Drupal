@@ -1,0 +1,24 @@
+tests:
+  'The homepage should be fast':
+    path:
+      - '/'
+    assertions:
+      - 'main.wall_time <= 250ms'
+  '"assert.active" is a dev_only feature and should be disabled in production':
+    path:
+      - '/.*'
+    methods:
+      - ANY
+    command: '.*'
+    assertions:
+      - { label: null, expression: 'runtime.configuration.assert_active === false' }
+    exclude: {  }
+  '"display_errors" should be disabled':
+    path:
+      - '/.*'
+    methods:
+      - ANY
+    command: '.*'
+    assertions:
+      - { label: null, expression: 'not is_configuration_enabled("display_errors")' }
+    exclude: {  }
