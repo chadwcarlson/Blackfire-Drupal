@@ -13,6 +13,16 @@ tests:
         assertions:
             - { label: null, expression: 'not has_vulnerable_dependencies()' }
         exclude: {  }
+    'You should enable twig cache in Drupal':
+        path:
+            - '/.*'
+        methods:
+            - ANY
+        command: '.*'
+        assertions:
+            - { label: null, expression: 'metrics.drupal8.twig_cache.construct.count >= 1' }
+        when: 'metrics.drupal8.installed.count > 0'
+        exclude: {  }
     '"assert.active" is a dev_only feature and should be disabled in production':
         path:
             - '/.*'
