@@ -85,11 +85,7 @@ tests:
         assertions:
             - { label: null, expression: 'runtime.configuration.session_gc_probability === 0' }
         exclude: {  }
-# recommendations:
-#     php.drupal8.enable_apcu:
-#         enabled: false
-#     php.drupal8.twig_cache:
-#         enabled: false
+
 scenarios: |
     #!blackfire-player
 
