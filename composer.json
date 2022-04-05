@@ -31,7 +31,12 @@
     "prefer-stable": true,
     "config": {
         "sort-packages": true,
-        "apcu-autoloader": true
+        "apcu-autoloader": true,
+        "allow-plugins": {
+            "drupal/core-composer-scaffold": true,
+            "drupal/core-project-message": true,
+            "drupal/console-extend-plugin": true
+        }
     },
     "extra": {
         "drupal-scaffold": {
