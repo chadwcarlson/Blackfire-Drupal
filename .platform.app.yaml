@@ -156,6 +156,6 @@ crons:
     drupal:
         spec: '*/19 * * * *'
         cmd: 'cd web ; drush core-cron'
-    garbage:
-        spec: '*/11 * * * *'
-        cmd: 'php garbage-collect.php'
+    # garbage:
+    #     spec: '*/11 * * * *'
+    #     cmd: 'php garbage-collect.php'
