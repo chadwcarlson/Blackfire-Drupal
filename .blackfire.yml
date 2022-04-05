@@ -32,16 +32,16 @@ tests:
         assertions:
             - { label: null, expression: 'runtime.configuration.assert_active === false' }
         exclude: {  }
-    'You should enable APCu for Drupal':
-        path:
-            - '/.*'
-        methods:
-            - ANY
-        command: '.*'
-        assertions:
-            - { label: null, expression: 'metrics.drupal8.fast_cache.count > 0' }
-        when: 'metrics.drupal8.installed.count > 0'
-        exclude: {  }
+    # 'You should enable APCu for Drupal':
+    #     path:
+    #         - '/.*'
+    #     methods:
+    #         - ANY
+    #     command: '.*'
+    #     assertions:
+    #         - { label: null, expression: 'metrics.drupal8.fast_cache.count > 0' }
+    #     when: 'metrics.drupal8.installed.count > 0'
+    #     exclude: {  }
     '"display_errors" should be disabled':
         path:
             - '/.*'
