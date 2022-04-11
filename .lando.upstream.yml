@@ -20,11 +20,23 @@ config:
   overrides:
     app:
       variables:
+        env:
+          APP_ENV: prod
+          APP_DEBUG: 0
+          BLACKFIRE_AGENT_SOCKET: "tcp://blackfire:8307"
         d8config:
           "system.file:path:temporary": "/tmp"
         d8settings:
           "skip_permissions_hardening": 1
 
+services:
+  blackfire:
+    type: blackfire
+    app_service: app
+    server_id: ba8bc7ac-987a-4918-b6f6-0f5a38fcc885
+    server_token: f37fe4c36160f1148c48c3a74f66a43051618864f3c150a9c1f5f69b8beb7f3c
+    client_id: 98287b57-1f00-417f-a10c-35384a022c3a
+    client_token: db121619890b2468cc75b214d59a0d2873ca5c18dc95aa2cc0b734c32dabd489
 
 # These are tools that are commonly used during development for this template.
 tooling:
@@ -32,3 +44,9 @@ tooling:
     service: app
   drupal:
     service: app
+  # blackfire:
+  #   cmd: /usr/local/bin/blackfire
+  #   service: app
+  # blackfire-player:
+  #   cmd: /usr/local/bin/blackfire-player
+  #   service: app

@@ -1,12 +1,5 @@
-# This file describes an application. You can have multiple applications
-# in the same project.
-#
-# See https://docs.platform.sh/configuration/app.html
-
-# The name of this app. Must be unique within a project.
 name: 'app'
 
-# The runtime the application uses.
 type: 'php:7.4'
 
 dependencies:
@@ -18,12 +11,9 @@ runtime:
     extensions:
         - redis
         - blackfire
+        - opcache
+        - apcu
 
-# The relationships of the application with services or other applications.
-#
-# The left-hand side is the name of the relationship as it will be exposed
-# to the application in the PLATFORM_RELATIONSHIPS variable. The right-hand
-# side is in the form `<service name>:<endpoint name>`.
 relationships:
     database: 'db:mysql'
     redis: 'cache:redis'
@@ -65,6 +55,7 @@ mounts:
 # Configuration of the build of this application.
 build:
     # Automatically run `composer install` on every build.
+    # flavor: none
     flavor: composer
 
 # The hooks executed at various points in the lifecycle of the application.
@@ -73,6 +64,9 @@ hooks:
     # No services are available but the disk is writeable.
     build: |
         set -e
+        # composer --no-ansi --no-interaction install --no-progress --prefer-dist --optimize-autoloader --apcu-autoloader
+        # composer dump-autoload --apcu
+        # echo "Build hook complete."
     # The deploy hook runs after your application has been deployed and started.
     # Code cannot be modified at this point but the database is available.
     # The site is not accepting requests while this script runs so keep it
@@ -146,3 +140,6 @@ crons:
     drupal:
         spec: '*/19 * * * *'
         cmd: 'cd web ; drush core-cron'
+    # garbage:
+    #     spec: '*/11 * * * *'
+    #     cmd: 'php garbage-collect.php'
