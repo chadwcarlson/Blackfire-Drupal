@@ -18,6 +18,8 @@ runtime:
     extensions:
         - redis
         - blackfire
+        - apcu
+        - sodium
 
 # The relationships of the application with services or other applications.
 #
